@@ -1,0 +1,61 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Server (https)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/SimpleChat/bin/Debug/net10.0/SimpleChat.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/SimpleChat",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Launch Server (http)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/SimpleChat/bin/Debug/net10.0/SimpleChat.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/SimpleChat",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(http://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:5075"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Launch Client",
+            "type": "blazorwasm",
+            "request": "launch",
+            "url": "https://localhost:7249",
+            "cwd": "${workspaceFolder}/SimpleChat.Client",
+            "browser": "chrome",
+            "runtimeExecutable": "C:\\Program Files\\Google\\Chrome Dev\\Application\\chrome.exe"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Server & Client",
+            "configurations": ["Launch Server (https)", "Launch Client"]
+        }
+    ]
+}
